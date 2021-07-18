@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data>
+  <region region_name="US">
+    <cases>34067669</cases>
+    <deaths>608882</deaths>
+  </region>
+  <region region_name="India">
+    <cases>31064908</cases>
+    <deaths>413091</deaths>
+  </region>
+  <region region_name="Brazil">
+    <cases>19342448</cases>
+    <deaths>541266</deaths>
+  </region>
+  <region region_name="France">
+    <cases>5917397</cases>
+    <deaths>111657</deaths>
+  </region>
+  <region region_name="Russia">
+    <cases>5860113</cases>
+    <deaths>145222</deaths>
+  </region>
+  <region region_name="Turkey">
+    <cases>5522039</cases>
+    <deaths>50488</deaths>
+  </region>
+  <region region_name="United Kingdom">
+    <cases>5407428</cases>
+    <deaths>128960</deaths>
+  </region>
+  <region region_name="Argentina">
+    <cases>4749443</cases>
+    <deaths>101434</deaths>
+  </region>
+  <region region_name="Colombia">
+    <cases>4621260</cases>
+    <deaths>115831</deaths>
+  </region>
+  <region region_name="Italy">
+    <cases>4284332</cases>
+    <deaths>127864</deaths>
+  </region>
+</data>

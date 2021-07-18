@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MEX>
+  <province province_name="Ciudad de Mexico">
+    <cases>730359</cases>
+    <deaths>35103</deaths>
+  </province>
+  <province province_name="Mexico">
+    <cases>271572</cases>
+    <deaths>37688</deaths>
+  </province>
+  <province province_name="Guanajuato">
+    <cases>134918</cases>
+    <deaths>11131</deaths>
+  </province>
+  <province province_name="Nuevo Leon">
+    <cases>132678</cases>
+    <deaths>9866</deaths>
+  </province>
+  <province province_name="Jalisco">
+    <cases>94365</cases>
+    <deaths>12831</deaths>
+  </province>
+  <province province_name="Puebla">
+    <cases>87961</cases>
+    <deaths>12390</deaths>
+  </province>
+  <province province_name="Sonora">
+    <cases>83618</cases>
+    <deaths>6889</deaths>
+  </province>
+  <province province_name="Tabasco">
+    <cases>81842</cases>
+    <deaths>4348</deaths>
+  </province>
+  <province province_name="Veracruz">
+    <cases>71567</cases>
+    <deaths>10396</deaths>
+  </province>
+  <province province_name="Queretaro">
+    <cases>71353</cases>
+    <deaths>4506</deaths>
+  </province>
+</MEX>

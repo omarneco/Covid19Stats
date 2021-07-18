@@ -1,0 +1,72 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="import" href="~/Views/Shared/Form.cshtml">
+        <title>@ViewBag.Message</title>
+    </head>
+    <body>
+        <br />
+        <h5>TOP TEN COVID CASES UP TO: @ViewBag.Date</h5>
+        @using (Html.BeginForm("Covid19Province", "Home", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            <div>
+                <select class="form-control form-control-sm" name="Region">
+                    @foreach (var region in Model.region)
+                    {
+                        <option value=@region.iso>@region.name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <button class="btn-lg" 
+                        type="submit">
+                Report
+                </button>
+                <button class="btn-lg"
+                        type="button"
+                        onclick="location.href='@Url.Action("Covid19StatToXml", "Home")'">
+                    XML
+                </button>
+                <button class="btn-lg"
+                        type="button"
+                        onclick="location.href='@Url.Action("Covid19StatToJson", "Home")'">
+                    JSON
+                </button>
+                <button class="btn-lg"
+                        type="button"
+                        onclick="location.href='@Url.Action("Covid19StatCvs", "Home")'">
+                    CVS
+                </button>
+            </div>
+        }
+
+        <div style="border:thin">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-left" style="font-size:large">Region</th>
+                        <th class="text-right" style="font-size:large">Cases</th>
+                        <th class="text-right" style="font-size:large">Deaths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var covid19 in Model.data)
+                    {
+                        <tr>
+                            <td align="left" width="25%">@covid19.region_name</td>
+                            <td align="right">@String.Format("{0:N0}", covid19.cases)</td>
+                            <td align="right">@String.Format("{0:N0}", covid19.deaths)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
