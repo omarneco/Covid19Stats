@@ -24,8 +24,6 @@ namespace Covid19Stat.Services
                 var client = new HttpClient();
                 var request = new HttpRequestMessage
                 {
-                    
-
                     Method = HttpMethod.Get,
                     RequestUri = new Uri("https://covid-19-statistics.p.rapidapi.com/reports?date=" + date.ToString("yyyy-MM-dd")),
                     Headers =
@@ -34,50 +32,69 @@ namespace Covid19Stat.Services
                             { "x-rapidapi-host", "covid-19-statistics.p.rapidapi.com" },
                         },
                 };
-                using( HttpResponseMessage response = await client.SendAsync(request))
+                using (HttpResponseMessage response = await client.SendAsync(request))
                 {
+                    if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                    {
+                        throw new HttpException(((int)response.StatusCode), "Covid statistics endpoint failed.");
+                    }
                     response.EnsureSuccessStatusCode();
-                    
-                    var body =  await response.Content.ReadAsStringAsync();
+
+                    var body = await response.Content.ReadAsStringAsync();
                     json = body;
                 }
-               
+
                 return json;
             }
             catch (HttpException ex)
             {
-                throw new NotImplementedException("There was following error: " + ex.Message);
+                throw new NotImplementedException("Covid endpoint failed: " + ex.Message);
             }
         }
         public async Task<List<Models.Data>> StoreCovid19Stat()
         {
             List<Data> lcovid = new List<Data>();
-            String json =  await GetCovid19Stat();
-
-            JavaScriptSerializer serial = new JavaScriptSerializer();
-            dynamic data = serial.Deserialize<dynamic>(json);
-            foreach (var item in data["data"])
+            String json = await GetCovid19Stat();
+            if (String.IsNullOrEmpty(json) ||
+                json == "" ||
+                json.Length == 11
+                )
             {
-                Data stat = new Data()
-                {
-                    date = item["date"],
-                    confirmed = item["confirmed"],
-                    deaths = item["deaths"],
-                    recovered = item["recovered"],
-                    confirmed_diff = item["confirmed_diff"],
-                    deaths_diff = item["deaths_diff"],
-                    recovered_diff = item["recovered_diff"],
-                    active = item["active"],
-                    active_diff = item["active_diff"],
-                    fatality_rate = item["fatality_rate"],
-                    region_code = item["region"]["iso"],
-                    region_name = item["region"]["name"],
-                    province_name = item["region"]["province"]==""?"Todas las Provincias":item["region"]["province"]
-                };
-
-                lcovid.Add(stat);
+                throw new Exception("Covid endpoint returns no values.");
             }
-            return lcovid;
+
+            try
+            {
+                JavaScriptSerializer serial = new JavaScriptSerializer();
+                dynamic data = serial.Deserialize<dynamic>(json);
+                foreach (var item in data["data"])
+                {
+                    Data stat = new Data()
+                    {
+                        date = item["date"],
+                        confirmed = item["confirmed"],
+                        deaths = item["deaths"],
+                        recovered = item["recovered"],
+                        confirmed_diff = item["confirmed_diff"],
+                        deaths_diff = item["deaths_diff"],
+                        recovered_diff = item["recovered_diff"],
+                        active = item["active"],
+                        active_diff = item["active_diff"],
+                        fatality_rate = item["fatality_rate"],
+                        region_code = item["region"]["iso"],
+                        region_name = item["region"]["name"],
+                        province_name = item["region"]["province"] == "" ? "Todas las Provincias" : item["region"]["province"]
+                    };
+
+                    lcovid.Add(stat);
+                }
+
+                return lcovid;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Cannot not show data because: " + ex.Message);
+            }
         }
 
         public async Task<List<Statistic>> TopTenRegion()
