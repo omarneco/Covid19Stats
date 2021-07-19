@@ -1,43 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<USA>
-  <province province_name="California">
-    <cases>3858148</cases>
-    <deaths>64091</deaths>
+<CHN>
+  <province province_name="Hubei">
+    <cases>68189</cases>
+    <deaths>4512</deaths>
   </province>
-  <province province_name="Texas">
-    <cases>3039664</cases>
-    <deaths>52816</deaths>
+  <province province_name="Hong Kong">
+    <cases>11956</cases>
+    <deaths>212</deaths>
   </province>
-  <province province_name="Florida">
-    <cases>2450344</cases>
-    <deaths>38388</deaths>
+  <province province_name="Guangdong">
+    <cases>2800</cases>
+    <deaths>8</deaths>
   </province>
-  <province province_name="New York">
-    <cases>2125535</cases>
-    <deaths>53765</deaths>
+  <province province_name="Shanghai">
+    <cases>2267</cases>
+    <deaths>7</deaths>
   </province>
-  <province province_name="Illinois">
-    <cases>1399946</cases>
-    <deaths>25790</deaths>
+  <province province_name="Heilongjiang">
+    <cases>1612</cases>
+    <deaths>13</deaths>
   </province>
-  <province province_name="Pennsylvania">
-    <cases>1220385</cases>
-    <deaths>27790</deaths>
+  <province province_name="Zhejiang">
+    <cases>1392</cases>
+    <deaths>1</deaths>
   </province>
-  <province province_name="Georgia">
-    <cases>1145976</cases>
-    <deaths>21558</deaths>
+  <province province_name="Henan">
+    <cases>1325</cases>
+    <deaths>22</deaths>
   </province>
-  <province province_name="Ohio">
-    <cases>1116808</cases>
-    <deaths>20437</deaths>
+  <province province_name="Hebei">
+    <cases>1317</cases>
+    <deaths>7</deaths>
   </province>
-  <province province_name="New Jersey">
-    <cases>1028503</cases>
-    <deaths>26536</deaths>
+  <province province_name="Sichuan">
+    <cases>1125</cases>
+    <deaths>3</deaths>
   </province>
-  <province province_name="North Carolina">
-    <cases>1022876</cases>
-    <deaths>13523</deaths>
+  <province province_name="Beijing">
+    <cases>1083</cases>
+    <deaths>9</deaths>
   </province>
-</USA>
+</CHN>

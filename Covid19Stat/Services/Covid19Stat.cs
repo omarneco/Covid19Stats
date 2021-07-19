@@ -14,6 +14,8 @@ namespace Covid19Stat.Services
 {
     public class Covid19Stat : Covid19Api
     {
+        List<Data> lcovid = new List<Data>();
+
         public async Task<String> GetCovid19Stat()
         {
             try
@@ -53,7 +55,6 @@ namespace Covid19Stat.Services
         }
         public async Task<List<Models.Data>> StoreCovid19Stat()
         {
-            List<Data> lcovid = new List<Data>();
             String json = await GetCovid19Stat();
             if (String.IsNullOrEmpty(json) ||
                 json == "" ||
