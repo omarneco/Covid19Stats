@@ -15,11 +15,12 @@
     </head>
     <body>
         <br />
-        <h5>TOP TEN COVID CASES UP TO: @ViewBag.Date</h5>
+        <h4>TOP TEN COVID CASES UP TO: @ViewBag.Date</h4>
         @using (Html.BeginForm("Covid19Province", "Home", FormMethod.Post, new { @class = "form-inline" }))
         {
     <div>
         <select style="font-size:medium" class="form-control form-control-static" name="Region" id="Region">
+            <option value="RG">Regions</option>
             @foreach (var region in Model.region)
             {
                 if (region.iso == ViewBag.Region)
@@ -37,29 +38,29 @@
                 Report
             </button>
     </div>
-            <div style="width:50% " class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn-lg"
-                        id="xml"
-                        type="button"
-                        onclick="onclick = location.href = '@Url.Action("Covid19ProvinceStatToXml", "Home")' + '?Region=' + $('#Region').val()">
-                    XML
-                </button>
+    <div style="width:68% " class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn-lg"
+                id="xml"
+                type="button"
+                onclick="onclick = location.href = '@Url.Action("Covid19ProvinceStatToXml", "Home")' + '?Region=' + $('#Region').val()">
+            XML
+        </button>
 
-                <button class="btn-lg"
-                        type="button"
-                        onclick="onclick=location.href='@Url.Action("Covid19ProvinceStatToJson", "Home")'+'?Region=' + $('#Region').val()">
-                    JSON
-                </button>
-                <button class="btn-lg"
-                        type="button"
-                        onclick="onclick=location.href='@Url.Action("Covid19ProvinceStatCvs", "Home")'+'?Region=' + $('#Region').val()">
-                    CVS
-                </button>
-            </div>
+        <button class="btn-lg"
+                type="button"
+                onclick="onclick=location.href='@Url.Action("Covid19ProvinceStatToJson", "Home")'+'?Region=' + $('#Region').val()">
+            JSON
+        </button>
+        <button class="btn-lg"
+                type="button"
+                onclick="onclick=location.href='@Url.Action("Covid19ProvinceStatCvs", "Home")'+'?Region=' + $('#Region').val()">
+            CVS
+        </button>
+    </div>
         }
-
+        <br />
         <div style="border:thin">
-            <table>
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="text-left" style="font-size:large">Province</th>
@@ -71,9 +72,9 @@
                     @foreach (var covid19 in Model.province)
                     {
                         <tr>
-                            <td align="left" width="25%">@covid19.region_name</td>
-                            <td align="right">@String.Format("{0:N0}", covid19.cases)</td>
-                            <td align="right">@String.Format("{0:N0}", covid19.deaths)</td>
+                            <td align="left" style="font-size:medium">@covid19.region_name</td>
+                            <td align="right" style="font-size:medium">@String.Format("{0:N0}", covid19.cases)</td>
+                            <td align="right" style="font-size:medium">@String.Format("{0:N0}", covid19.deaths)</td>
                         </tr>
                     }
                 </tbody>
