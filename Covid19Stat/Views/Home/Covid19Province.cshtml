@@ -18,27 +18,26 @@
         <h5>TOP TEN COVID CASES UP TO: @ViewBag.Date</h5>
         @using (Html.BeginForm("Covid19Province", "Home", FormMethod.Post, new { @class = "form-inline" }))
         {
-            <div>
-                <select class="form-control form-control-sm" name="Region" id="Region">
-                    @foreach (var region in Model.region)
-                    {
-                        if (region.iso == ViewBag.Region)
-                        {
-                            <option value=@region.iso selected>@region.name</option>
-                        }
-                        else
-                        {
-                            <option value=@region.iso>@region.name</option>
-                        }
-                    }
-                </select>
-            </div>
-            <div>
-                <button class="btn-lg"
-                        type="submit">
-                    Report
-                </button>
-
+    <div>
+        <select style="font-size:medium" class="form-control form-control-static" name="Region" id="Region">
+            @foreach (var region in Model.region)
+            {
+                if (region.iso == ViewBag.Region)
+                {
+                    <option value=@region.iso selected>@region.name</option>
+                }
+                else
+                {
+                    <option value=@region.iso>@region.name</option>
+                }
+            }
+        </select>
+            <button class="btn-lg"
+                    type="submit">
+                Report
+            </button>
+    </div>
+            <div style="width:50% " class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn-lg"
                         id="xml"
                         type="button"

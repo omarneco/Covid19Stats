@@ -20,7 +20,7 @@ namespace Covid19Stat.Services
                 var request = new HttpRequestMessage
                 {
                     Method = System.Net.Http.HttpMethod.Get,
-                    RequestUri = new Uri("https://covid-19-statistics.p.rapidapi.com/regionss"),
+                    RequestUri = new Uri("https://covid-19-statistics.p.rapidapi.com/regions"),
                     Headers =
                 {
                     { "x-rapidapi-key", "1086a5a2demshd48c582ebd6dc8ap1b8015jsndc6bda7790d7" },

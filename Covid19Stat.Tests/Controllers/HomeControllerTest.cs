@@ -13,39 +13,103 @@ namespace Covid19Stat.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void Covid19()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            var result = controller.Covid19() ;
 
             // Assert
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void About()
+        public void Covid19Province(String Region)
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            var result = controller.Covid19Province(Region);
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual("Covid19 Statistic by Province", result.Result.ToString());
         }
 
         [TestMethod]
-        public void Contact()
+        public void Covid19StatToXml()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            var result = controller.Covid19StatToXml();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Covid19StatToJson()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.Covid19StatToJson();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Covid19StatCvs()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.Covid19StatCvs();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public void Covid19ProvinceStatToXml(String Region)
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.Covid19ProvinceStatToXml(Region);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Covid19ProvinceStatToJson(String Region)
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.Covid19ProvinceStatToJson(Region);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Covid19ProvinceStatCvs(String Region)
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.Covid19ProvinceStatToJson(Region);
 
             // Assert
             Assert.IsNotNull(result);
